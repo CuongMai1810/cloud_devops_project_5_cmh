@@ -65,7 +65,17 @@ jobs:
           command: |
             #push image
             docker push $AWS_ECR/project5:latest    
-  
+
+workflows:
+  default:
+    jobs:
+      - linting-code
+      - build-image:
+          requires: [linting-code]
+      # - deploy-infrastructure:
+      #     requires: [build-image]
+      # - deploy-config:
+      #     requires: [deploy-infrastructure]  
   
       
       
