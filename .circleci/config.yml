@@ -53,11 +53,11 @@ jobs:
       - run:
           name: build-docker-image
           command: |
-            aws s3 configure set aws_access_key_id $AWS_ACCESS_KEY_ID
-            aws s3 configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
-            aws s3 configure set aws_session_token $AWS_SESSION_TOKEN
-            aws s3 configure set region $AWS_DEFAULT_REGION
-            aws s3 ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 504395544721.dkr.ecr.us-east-1.amazonaws.com
+            aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+            aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+            aws configure set aws_session_token $AWS_SESSION_TOKEN
+            aws configure set region $AWS_DEFAULT_REGION
+            aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 504395544721.dkr.ecr.us-east-1.amazonaws.com
             docker build -t repo_project_5 .
             docker tag repo_project_5:latest 504395544721.dkr.ecr.us-east-1.amazonaws.com/repo_project_5:latest
       - run:
