@@ -84,14 +84,8 @@ jobs:
           command: |
             apk add --update ansible tar curl
             curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-            #curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
-            #echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
-            apk add --update -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-            # curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.18.8/2020-09-18/bin/linux/amd64/kubectl
             chmod +x ./kubectl
             mv ./kubectl ~/.local/bin/kubectl
-            kubectl version
-            echo "Intall eksctl"
             curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
             mv /tmp/eksctl /usr/local/bin
             eksctl version
