@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: 374000545310.dkr.ecr.us-east-1.amazonaws.com/project5:latest
+        image: 504395544721.dkr.ecr.us-east-1.amazonaws.com/repo_project_5:latest
         ports:
           - name: web
             containerPort: 80
@@ -24,7 +24,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-service loadbalance
+  name: my-service-loadbalance
 spec:
   selector:
     app: my-project5-service
